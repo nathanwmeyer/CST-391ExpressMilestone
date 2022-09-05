@@ -17,7 +17,7 @@ const port = 3000
 
 // Database configuration
 const dbHost = "localhost"
-const dbPort = 50690;
+const dbPort = 53380;
 const dbUsername = "azure";
 const dbPassword = "6#vWHD_$";
 
