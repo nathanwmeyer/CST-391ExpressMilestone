@@ -35,10 +35,18 @@ app.use(function (req, res, next) {
     next();
 });
 
+/** 
+ * GET '/':
+ * gets the default root Route for the application, only sends a message
+*/
 app.get('/', function (_req, res){
     res.send('This is the default root Route.');
 })
 
+/** 
+ * GET '/products':
+ * gets a list of all products in the database using ProductDAO
+*/
 app.get('/products', function (req, res){
     let dao = new ProductDAO(dbHost, dbPort, dbUsername, dbPassword);
     dao.findAllProducts(function(products)
@@ -46,6 +54,11 @@ app.get('/products', function (req, res){
         res.json(products);
     });
 });
+
+/** 
+ * GET '/products/:id':
+ * gets a specific product using its id using ProductDAO
+*/
 app.get('/products/:id', function (req, res){
     let dao = new ProductDAO(dbHost, dbPort, dbUsername, dbPassword);
     dao.findProducts(req.params.id, function(products)
@@ -53,6 +66,11 @@ app.get('/products/:id', function (req, res){
         res.json(products)
     })
 })
+
+/** 
+ * POST '/products':
+ * posts a product to the database using ProductDAO
+*/
 app.post('/products', function (req, res){
     if(!req.body.name){
         res.status(400).json({"error": "There was an issue with the posted product, it could not be added"});
@@ -66,6 +84,11 @@ app.post('/products', function (req, res){
         })
         }
 });
+
+/** 
+ * PUT '/products/:id':
+ * updates a product in the database by taking an id and using ProductDAO to find and update the product
+*/
 app.put('/products/:id', function (req, res) {
     if(!req.body.name){
         res.status(400).json({"error": "There was an issue with the posted product, it could not be updated"});
@@ -82,6 +105,11 @@ app.put('/products/:id', function (req, res) {
         })
     }
 });
+
+/** 
+ * DELETE '/products/:id':
+ * deletes a product in the database by taking its id and using ProductDAO to remove it
+*/
 app.delete('/products/:id', function (req, res){
     let productId = Number(req.params.id);
 
