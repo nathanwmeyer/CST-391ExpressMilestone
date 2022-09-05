@@ -52,4 +52,4 @@ jobs:
           app-name: 'GCUCST391Express'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_612DE3855C1F4B2D81BE9458517CF024 }}
-          package: .
+          package: ./build
