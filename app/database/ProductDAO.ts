@@ -1,5 +1,5 @@
 /**
- * This class controls the access and interactions 
+ * This class controls the access and interactions with the mysql database
  *
  * @export
  * @class ProductDAO
